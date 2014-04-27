@@ -52,7 +52,7 @@ write.table(tidy, "tidy.txt", sep="\t",row.names = FALSE)
 cat("write to '",normalizePath("tidy.txt"),"' ok.")
 
 
-cat("\nAll done. Thanks for taking time to check my assessment.")
+cat("\nAll done. Thanks for taking time to check my assignment.")
 
 
 
