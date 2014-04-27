@@ -1,8 +1,8 @@
 #try guessing working directory for data set
 cat("\nDetermining working directory...")
 if(!file.exists("features.txt")){
-  Dir <- "./UCI HAR Dataset/"
-  while(!file.exists(file.path(Dir, "features.txt", showWarnings=FALSE))) Dir <- readline(paste("No dataset found in\n",normalizePath(Dir),"\nPlease input path of dataset (folder which containts 'features.txt' etc.):"))
+  Dir <- "UCI HAR Dataset"
+  while(!file.exists(file.path(Dir, "features.txt"), showWarnings=FALSE)) Dir <- readline(paste("No dataset found in\n",normalizePath(Dir),"\nPlease input path of dataset (folder which containts 'features.txt' etc.):"))
   setwd(Dir);
 }
 cat("use '",getwd(),"' as working directory.")
