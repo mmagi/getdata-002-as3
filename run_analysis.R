@@ -2,7 +2,7 @@
 cat("\nDetermining working directory...")
 if(!file.exists("features.txt")){
   Dir <- "./UCI HAR Dataset/"
-  while(!file.exists(file.path(Dir, "features.txt"), showWarnings=F)) Dir <- readline(paste("No dataset found in\n",normalizePath(Dir),"\nPlease input path of dataset (folder which containts 'features.txt' etc.):"))
+  while(!file.exists(file.path(Dir, "features.txt", showWarnings=FALSE))) Dir <- readline(paste("No dataset found in\n",normalizePath(Dir),"\nPlease input path of dataset (folder which containts 'features.txt' etc.):"))
   setwd(Dir);
 }
 cat("use '",getwd(),"' as working directory.")
@@ -43,12 +43,12 @@ cat("done.")
 
 #5.Creates a second, independent tidy data set with the average of each variable for each activity and each subject. 
 cat("\nCreating tidy data set...")
-tidy<-aggregate(Xsub,list(subject=y$aname, activity=subject$subject), mean)
+tidy<-aggregate(Xsub,list(subject=subject$subject, activity=y$aname), mean)
 cat("done.")
 
 #output tidy.txt for upload
 cat("\nWriting tidy data set...")
-write.table(tidy, "tidy.txt", sep="\t")
+write.table(tidy, "tidy.txt", sep="\t",row.names = FALSE)
 cat("write to '",normalizePath("tidy.txt"),"' ok.")
 
 
