@@ -1,8 +1,8 @@
 #try guessing working directory for data set
 cat("\nDetermining working directory...")
 if(!file.exists("features.txt")){
-  Dir <- "UCI HAR Dataset"
-  while(!file.exists(file.path(Dir, "features.txt"), showWarnings=FALSE)) Dir <- readline(paste("No dataset found in\n",normalizePath(Dir),"\nPlease input path of dataset (folder which containts 'features.txt' etc.):"))
+  Dir <- "./UCI HAR Dataset/"
+  while (!file.exists(file.path(Dir, "features.txt"), showWarnings=FALSE)) Dir <- readline(paste("No dataset found in\n",normalizePath(Dir),"\nPlease input path of dataset (folder which containts 'features.txt' etc.):"))
   setwd(Dir);
 }
 cat("use '",getwd(),"' as working directory.")
@@ -11,10 +11,10 @@ cat("use '",getwd(),"' as working directory.")
 cat("\nReading dataset...")
 features <- read.table("features.txt", col.names=c("fid", "fname"))
 activities <- read.table("activity_labels.txt", col.names=c("aid", "aname"))
-X_train <- read.table("train/X_train.txt", col.names=features$fname)
+X_train <- read.table("train/X_train.txt", col.names=features$fname,check.names=FALSE)
 y_train <- read.table("train/y_train.txt", col.names=c("aid"))
 subject_train <- read.table("train/subject_train.txt", col.names=c("subject"))
-X_test <- read.table("test/X_test.txt", col.names=features$fname)
+X_test <- read.table("test/X_test.txt", col.names=features$fname,check.names=FALSE)
 y_test <- read.table("test/y_test.txt", col.names=c("aid"))
 subject_test <- read.table("test/subject_test.txt", col.names=c("subject"))
 cat("done.")
